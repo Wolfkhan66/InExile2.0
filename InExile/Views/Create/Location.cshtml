@@ -2,3 +2,44 @@
     <h1>New Location Entry</h1>
     <p class="lead">Fill in the fields below and click 'Submit'.</p>
 </div>
+
+<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Form Name</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Name">Name</label>
+            <div class="col-md-4">
+                <input id="Name" name="Name" type="text" placeholder="" class="form-control input-md" required="">
+            </div>
+        </div>
+
+        <!-- File Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="imageButton">Add an Image</label>
+            <div class="col-md-4">
+                <input id="imageButton" name="imageButton" class="input-file" type="file">
+            </div>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="addInfo">Additional Information</label>
+            <div class="col-md-4">
+                <textarea class="form-control" id="addInfo" name="addInfo"></textarea>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="Submit">Create Entry</label>
+            <div class="col-md-4">
+                <button id="Submit" name="Submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
