@@ -122,9 +122,13 @@
     <Compile Include="Controllers\CreateController.cs" />
     <Compile Include="Controllers\GuideController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UpdateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Guide\GuideItem.cs" />
+    <Compile Include="Models\Guide\GuideLocation.cs" />
+    <Compile Include="Models\Guide\GuideNPC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -408,7 +412,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\Update\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

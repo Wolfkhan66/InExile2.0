@@ -3,38 +3,46 @@
     <p class="lead">Fill in the fields below and click 'Submit'.</p>
 </div>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="/Update/NPC">
     <fieldset>
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Name">Name</label>
-            <div class="col-md-4">
-                <input id="Name" name="Name" type="text" placeholder="" class="form-control input-md" required="">
+            <label class="col-md-2 control-label" for="name">Name</label>
+            <div class="col-md-6">
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
             </div>
         </div>
 
-        <!-- File Button -->
+        <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="imageButton">Add an Image</label>
-            <div class="col-md-4">
-                <input id="imageButton" name="imageButton" class="input-file" type="file">
+            <label class="col-md-2 control-label" for="appearance">Appearance</label>
+            <div class="col-md-6">
+                <input id="appearance" name="appearance" type="text" placeholder="" class="form-control input-md">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="location">Location</label>
+            <div class="col-md-6">
+                <input id="location" name="location" type="text" placeholder="" class="form-control input-md">
             </div>
         </div>
 
         <!-- Textarea -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="addInfo">Additional Information</label>
-            <div class="col-md-4">
-                <textarea class="form-control" id="addInfo" name="addInfo"></textarea>
+            <label class="col-md-2 control-label" for="additional">Additional Information</label>
+            <div class="col-md-6">
+                <textarea class="form-control" id="additional" name="additional"></textarea>
             </div>
         </div>
 
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Submit">Create Entry</label>
+            <label class="col-md-2 control-label" for="submit">Create Entry</label>
             <div class="col-md-4">
-                <button id="Submit" name="Submit" class="btn btn-success">Submit</button>
+                <button type="submit" value="Save" id="submit" name="submit" class="btn btn-success">Submit</button>
             </div>
         </div>
 
