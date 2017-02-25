@@ -1,5 +1,4 @@
-﻿using InExile.Models;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace InExile.Controllers
 {

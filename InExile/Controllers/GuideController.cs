@@ -1,7 +1,4 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Data.SQLite;
-using System.Web;
+﻿using System.Data;
 using System.Web.Mvc;
 
 namespace InExile.Controllers
