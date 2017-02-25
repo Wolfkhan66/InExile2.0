@@ -9,48 +9,26 @@ namespace InExile.Controllers
 {
     public class UpdateController : Controller
     {
-            public ActionResult Location(string name, string description, string additional)
-            {
-                GuideLocation location = new GuideLocation(name, description, additional);
-                CreateParameters(location);
-                return View("Success");
-            }
+        DatabaseController Database = new DatabaseController();
+        public ActionResult Location(string name, string description, string additional)
+        {
+            //Database.Connect();
+            //Database.RunSQL("", null);
+            return View("Success");
+        }
 
-            public ActionResult NPC(string name, string appearance, string location, string additional)
-            {
-                GuideNPC npc = new GuideNPC(name, appearance, location, additional);
-                CreateParameters(npc);
-                return View("Success");
-            }
+        public ActionResult NPC(string name, string appearance, string location, string additional)
+        {
+            //Database.Connect();
+            //Database.RunSQL("", null);
+            return View("Success");
+        }
 
-            public ActionResult Item(string name, string description, string additional)
-            {
-                GuideItem item = new GuideItem(name, description, additional);
-                CreateParameters(item);
-                return View("Success");
-            }
-
-            public void CreateParameters(GuideLocation location)
-            {
-                // TO DO
-                UpdateDatabase();
-            }
-
-            public void CreateParameters(GuideItem item)
-            {
-                // TO DO
-                UpdateDatabase();
-            }
-
-            public void CreateParameters(GuideNPC npc)
-            {
-                // TO DO
-                UpdateDatabase();
-            }
-
-            public void UpdateDatabase()
-            {
-                // TO DO
-            }
+        public ActionResult Item(string name, string description, string additional)
+        {
+           //Database.Connect();
+           //Database.RunSQL("", null);
+            return View("Success");
         }
     }
+}
