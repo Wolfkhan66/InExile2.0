@@ -1,4 +1,6 @@
-﻿using System.Data;
+﻿using System.Configuration;
+using System.Data;
+using System.Data.SQLite;
 using System.Web;
 using System.Web.Mvc;
 
@@ -6,7 +8,7 @@ namespace InExile.Controllers
 {
     public class GuideController : Controller
     {
-        // GET: Guide
+        DatabaseController Database = new DatabaseController();
         public ActionResult Index()
         {
             return View();
@@ -38,37 +40,20 @@ namespace InExile.Controllers
         {
             // Create a fresh DataTable
             DataTable table = new DataTable();
-            
-            table.Columns.Add("Name", typeof(string));
-        
-            // Allow for additional Columns for each type if needed
+
+            ///Database.Connect();
             switch (type)
             {
                 case "npc":
-                    table.Columns.Add("Location", typeof(string));
+                    // table = Database.Select("SQL STRING", SQLPARAMETERS)
                     break;
                 case "item":
+                    // table = Database.Select("SQL STRING", SQLPARAMETERS)
                     break;
                 case "location":
+                    // table = Database.Select("SQL STRING", SQLPARAMETERS)
                     break;
             }
-
-            table.Columns.Add("Edit", typeof(HtmlString));
-            table.Columns.Add("Delete", typeof(HtmlString));
-
-            /// Connect to Database and retrieve entries
-            /// TO DO /// 
-            ///
-            switch (type)
-            {
-                case "npc":
-                    break;
-                case "item":
-                    break;
-                case "location":
-                    break;
-            }
-
             return table;
         }
     }

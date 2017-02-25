@@ -52,3 +52,11 @@ C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Web.WebPages.Ra
 C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\obj\Debug\InExile.dll
 C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\obj\Debug\InExile.pdb
 C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\obj\Debug\InExile.Web.csprojResolveAssemblyReference.cache
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\EntityFramework.dll
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\EntityFramework.SqlServer.dll
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Data.SQLite.dll
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Data.SQLite.EF6.dll
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Data.SQLite.Linq.dll
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\EntityFramework.xml
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\EntityFramework.SqlServer.xml
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Data.SQLite.xml
