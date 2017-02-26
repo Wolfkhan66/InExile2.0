@@ -42,13 +42,13 @@ namespace InExile.Controllers
             switch (type)
             {
                 case "npc":
-                    table = Database.Select("SELECT * FROM GuideNPCs", null);
+                    table = Database.Select("SELECT ID, Name FROM GuideNPCs", null);
                     break;
                 case "item":
-                    table = Database.Select("SELECT * FROM GuideItems", null);
+                    table = Database.Select("SELECT ID, Name FROM GuideItems", null);
                     break;
                 case "location":
-                    table = Database.Select("SELECT * FROM GuideLocations", null);
+                    table = Database.Select("SELECT ID, Name FROM GuideLocations", null);
                     break;
             }
             Database.CloseConnection();
