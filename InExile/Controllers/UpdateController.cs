@@ -6,6 +6,12 @@ namespace InExile.Controllers
     public class UpdateController : Controller
     {
         DatabaseController Database = new DatabaseController();
+
+        public ActionResult Create(string Type)
+        {
+            return View((object)Type);
+        }
+
         public ActionResult Location(string name, string description, string additional)
         {
             Database.Connect();

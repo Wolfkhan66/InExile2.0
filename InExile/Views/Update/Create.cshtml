@@ -1,0 +1,68 @@
+﻿@model string
+
+<div class="jumbotron">
+    <h1>New @Model Entry</h1>
+    <p class="lead">Fill in the fields below and click 'Submit'.</p>
+</div>
+
+<form class="form-horizontal" action="/Update/@Model">
+    <fieldset>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="name">Name</label>
+            <div class="col-md-6">
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+            </div>
+        </div>
+
+        @{
+            if (Model == "NPC")
+            {
+                        <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="appearance">Appearance</label>
+                    <div class="col-md-6">
+                        <input id="appearance" name="appearance" type="text" placeholder="" class="form-control input-md">
+                    </div>
+                </div>
+
+                         <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="location">Location</label>
+                    <div class="col-md-6">
+                        <input id="location" name="location" type="text" placeholder="" class="form-control input-md">
+                    </div>
+                </div>
+            }
+
+            if (Model != "NPC")
+            {
+                        <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="addInfo">Description</label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </div>
+            }
+        }
+
+        <!-- Textarea -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="additional">Additional Information</label>
+            <div class="col-md-6">
+                <textarea class="form-control" id="additional" name="additional"></textarea>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="submit">Create Entry</label>
+            <div class="col-md-4">
+                <button type="submit" value="Save" id="submit" name="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
