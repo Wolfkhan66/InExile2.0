@@ -17,7 +17,7 @@ namespace InExile.Controllers
             // Return the NPC view and pass it the table
             return View(table);
         }
- 
+
         public ActionResult Items()
         {
             // Create and populate a Datatable
@@ -38,19 +38,20 @@ namespace InExile.Controllers
             // Create a fresh DataTable
             DataTable table = new DataTable();
 
-            ///Database.Connect();
+            Database.Connect();
             switch (type)
             {
                 case "npc":
-                    // table = Database.Select("SQL STRING", SQLPARAMETERS)
+                    table = Database.Select("SELECT * FROM GuideNPCs", null);
                     break;
                 case "item":
-                    // table = Database.Select("SQL STRING", SQLPARAMETERS)
+                    table = Database.Select("SELECT * FROM GuideItems", null);
                     break;
                 case "location":
-                    // table = Database.Select("SQL STRING", SQLPARAMETERS)
+                    table = Database.Select("SELECT * FROM GuideLocations", null);
                     break;
             }
+            Database.CloseConnection();
             return table;
         }
     }

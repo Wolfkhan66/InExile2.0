@@ -3,6 +3,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
+using System.Web.Hosting;
 
 namespace InExile
 {
@@ -13,20 +14,22 @@ namespace InExile
         {
             try
             {
-                if (!Directory.Exists(ConfigurationManager.AppSettings["DatabasePath"]))
+                if (!Directory.Exists(HostingEnvironment.ApplicationPhysicalPath + ConfigurationManager.AppSettings["DatabasePath"]))
                 {
-                    Directory.CreateDirectory(ConfigurationManager.AppSettings["DatabasePath"]);
+                    Directory.CreateDirectory(HostingEnvironment.ApplicationPhysicalPath + ConfigurationManager.AppSettings["DatabasePath"]);
                 }
 
-                if (!File.Exists(ConfigurationManager.AppSettings["DatabasePath"] + ConfigurationManager.AppSettings["Database"]))
+                if (!File.Exists(HostingEnvironment.ApplicationPhysicalPath + ConfigurationManager.AppSettings["DatabasePath"] + ConfigurationManager.AppSettings["Database"]))
                {
-                    SQLiteConnection.CreateFile(ConfigurationManager.AppSettings["DatabasePath"] + ConfigurationManager.AppSettings["Database"]);
+                    SQLiteConnection.CreateFile(HostingEnvironment.ApplicationPhysicalPath + ConfigurationManager.AppSettings["DatabasePath"] + ConfigurationManager.AppSettings["Database"]);
                 }
 
-                this.MasterDatabase = new SQLiteConnection("Data Source=" + ConfigurationManager.AppSettings["DatabasePath"] + ConfigurationManager.AppSettings["Database"] + ";Version=3;");
+                this.MasterDatabase = new SQLiteConnection("Data Source=" + HostingEnvironment.ApplicationPhysicalPath +  ConfigurationManager.AppSettings["DatabasePath"] + ConfigurationManager.AppSettings["Database"] + ";Version=3;");
                 this.MasterDatabase.Open();
 
-                //RunSQL("CREATE TABLE IF NOT EXISTS `example` (`primary_key` INTEGER PRIMARY KEY AUTOINCREMENT, `example_string` TEXT);", null);
+                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideNPCs' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Appearance' TEXT, 'Location' TEXT, 'Additional' TEXT )", null);
+                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideLocations' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'Additional' TEXT)", null);
+                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideItems' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'Additional' TEXT)", null);
                 return true;
             }
             catch (Exception e)
@@ -36,7 +39,7 @@ namespace InExile
             }
         }
 
-        // run an Update, Insert or Execute query
+        // run an Update, Insert, Delete or Execute query
         public void RunSQL(string SQLString, SQLiteParameter[] Values)
         {
             try
@@ -79,6 +82,11 @@ namespace InExile
                 SqlCommand.Parameters.AddRange(Values);
             }
             return SqlCommand;
+        }
+
+        public void CloseConnection()
+        {
+            MasterDatabase.Close();
         }
     }
 }

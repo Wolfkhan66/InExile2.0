@@ -9,6 +9,7 @@ namespace InExile.Controllers
         {
             //Database.Connect();
             //Database.RunSQL("", null);
+            //Database.CloseConnection();
             return View("Success");
         }
 
@@ -16,13 +17,15 @@ namespace InExile.Controllers
         {
             //Database.Connect();
             //Database.RunSQL("", null);
+            //Database.CloseConnection();
             return View("Success");
         }
 
         public ActionResult Item(string name, string description, string additional)
         {
-           //Database.Connect();
-           //Database.RunSQL("", null);
+            //Database.Connect();
+            //Database.RunSQL("", null);
+            //Database.CloseConnection();
             return View("Success");
         }
     }
