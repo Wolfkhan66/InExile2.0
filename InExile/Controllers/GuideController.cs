@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using InExile.Models;
+using System.Data;
 using System.Web.Mvc;
 
 namespace InExile.Controllers
@@ -10,44 +11,31 @@ namespace InExile.Controllers
         {
             return View();
         }
-        public ActionResult NPCs()
+
+        public ActionResult ViewGuide(string Type)
         {
             // Create and populate a Datatable
-            DataTable table = GetTable("npc");
-            // Return the NPC view and pass it the table
-            return View(table);
+            DataTable table = GetTable(Type);
+            // Return the view and pass it the model
+            GuideViewModel model = new GuideViewModel(table, Type);
+            return View(model);
         }
 
-        public ActionResult Items()
-        {
-            // Create and populate a Datatable
-            DataTable table = GetTable("item");
-            // Return the Items view and pass it the table
-            return View(table);
-        }
-        public ActionResult Locations()
-        {
-            // Create and populate a Datatable
-            DataTable table = GetTable("location");
-            // Return the Locations view and pass it the table
-            return View(table);
-        }
-
-        public DataTable GetTable(string type)
+        public DataTable GetTable(string Type)
         {
             // Create a fresh DataTable
             DataTable table = new DataTable();
 
             Database.Connect();
-            switch (type)
+            switch (Type)
             {
-                case "npc":
+                case "NPCs":
                     table = Database.Select("SELECT ID, Name FROM GuideNPCs", null);
                     break;
-                case "item":
+                case "Items":
                     table = Database.Select("SELECT ID, Name FROM GuideItems", null);
                     break;
-                case "location":
+                case "Locations":
                     table = Database.Select("SELECT ID, Name FROM GuideLocations", null);
                     break;
             }
