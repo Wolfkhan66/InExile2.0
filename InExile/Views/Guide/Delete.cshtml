@@ -1,0 +1,72 @@
+﻿@model InExile.Models.GuideEditModel
+<div class="jumbotron warning">
+    <h1>Delete @Model.Type Entry</h1>
+    <p class="lead">Edit the fields below and click 'Submit'.</p>
+</div>
+
+<form class="form-horizontal">
+    <fieldset>
+
+        <div class="form-group">
+            <input type="hidden" name="ID" id="ID" value="@Model.Dictionary["ID"]" />
+            <input type="hidden" name="Type" id="Type" value="@Model.Type" />
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="name">Name</label>
+            <div class="col-md-6">
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="" value="@Model.Dictionary["Name"]">
+            </div>
+        </div>
+
+        @{
+            if (Model.Type == "NPCs")
+            {
+                        <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="appearance">Appearance</label>
+                    <div class="col-md-6">
+                        <input id="appearance" name="appearance" type="text" placeholder="" value="@Model.Dictionary["Appearance"]" class="form-control input-md">
+                    </div>
+                </div>
+
+                         <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="location">Location</label>
+                    <div class="col-md-6">
+                        <input id="location" name="location" type="text" placeholder="" value="@Model.Dictionary["Location"]" class="form-control input-md">
+                    </div>
+                </div>
+            }
+
+            if (Model.Type != "NPCs")
+            {
+                        <!-- Textarea -->
+                <div class="form-group">
+                    <label class="col-md-2 control-label" for="addInfo">Description</label>
+                    <div class="col-md-6">
+                        <textarea class="form-control" id="description" name="description">@Model.Dictionary["Description"]</textarea>
+                    </div>
+                </div>
+            }
+        }
+
+        <!-- Textarea -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="additional">Additional Information</label>
+            <div class="col-md-6">
+                <textarea class="form-control" id="additional" name="additional">@Model.Dictionary["Additional"]</textarea>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="submit">Create Entry</label>
+            <div class="col-md-4">
+                <p><a class="btn btn-default" href="/Update/Delete?Type=@Model.Type&ID=@Model.Dictionary["ID"]">Delete &raquo;</a></p>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

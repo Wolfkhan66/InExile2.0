@@ -1,5 +1,8 @@
 ﻿using InExile.Models;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SQLite;
+using System.Web;
 using System.Web.Mvc;
 
 namespace InExile.Controllers
@@ -21,9 +24,17 @@ namespace InExile.Controllers
             return View(model);
         }
 
+        public ActionResult GetEntry(int ID, string Type, string viewName)
+        {
+            Database.Connect();
+            Dictionary<string, object> dict = Database.SelectRow("SELECT * FROM Guide" + Type + " WHERE ID = " + ID,  null);
+            Database.CloseConnection();
+            GuideEditModel model = new GuideEditModel(dict, Type);
+            return View(viewName, model);
+        }
+
         public DataTable GetTable(string Type)
         {
-            // Create a fresh DataTable
             DataTable table = new DataTable();
 
             Database.Connect();
@@ -40,6 +51,15 @@ namespace InExile.Controllers
                     break;
             }
             Database.CloseConnection();
+            table.Columns.Add("Edit", typeof(HtmlString));
+            table.Columns.Add("Delete", typeof(HtmlString));
+
+            foreach (DataRow row in table.Rows)
+            {
+                row["Edit"] = new HtmlString("<a href=GetEntry?Id=" + row["ID"] + "&Type=" + Type + "&viewName=Edit>edit</a>"); ;
+                row["Delete"] = new HtmlString("<a href=GetEntry?Id=" + row["ID"] + "&Type=" + Type + "&viewName=Delete>delete</a>"); ;
+            }
+
             return table;
         }
     }
