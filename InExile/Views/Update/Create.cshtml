@@ -5,7 +5,7 @@
     <p class="lead">Fill in the fields below and click 'Submit'.</p>
 </div>
 
-<form class="form-horizontal" action="/Update/@Model">
+<form class="form-horizontal" method="post" action="/Update/@Model" enctype="multipart/form-data">
     <fieldset>
 
         <!-- Text input-->
@@ -28,12 +28,12 @@
                 </div>
 
                          <!-- Text input-->
-                <div class="form-group">
-                    <label class="col-md-2 control-label" for="location">Location</label>
-                    <div class="col-md-6">
-                        <input id="location" name="location" type="text" placeholder="" class="form-control input-md">
+                    <div class="form-group">
+                        <label class="col-md-2 control-label" for="location">Location</label>
+                        <div class="col-md-6">
+                            <input id="location" name="location" type="text" placeholder="" class="form-control input-md">
+                        </div>
                     </div>
-                </div>
             }
 
             if (Model != "NPC")
@@ -53,6 +53,14 @@
             <label class="col-md-2 control-label" for="additional">Additional Information</label>
             <div class="col-md-6">
                 <textarea class="form-control" id="additional" name="additional"></textarea>
+            </div>
+        </div>
+
+        <!-- File Upload-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="file">Image Button</label>
+            <div class="col-md-4">
+                <input id="image" name="image" type="file">
             </div>
         </div>
 

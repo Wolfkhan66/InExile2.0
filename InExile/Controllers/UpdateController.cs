@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
+using System.IO;
+using System.Web;
 using System.Web.Mvc;
 
 namespace InExile.Controllers
@@ -43,7 +45,7 @@ namespace InExile.Controllers
             return View("Success");
         }
 
-        public ActionResult Location(string name, string description, string additional)
+        public ActionResult Location(string name, string description, string additional, HttpPostedFileBase image)
         {
             Database.Connect();
             Database.RunSQL("INSERT INTO GuideNPCs(Name, Description, Additional) VALUES(@name, @description, @additional)",
@@ -53,7 +55,7 @@ namespace InExile.Controllers
             return View("Success");
         }
 
-        public ActionResult NPC(string name, string appearance, string location, string additional)
+        public ActionResult NPC(string name, string appearance, string location, string additional , HttpPostedFileBase image)
         {
             Database.Connect();
             Database.RunSQL("INSERT INTO GuideNPCs(Name, Appearance, Location, Additional) VALUES(@name, @appearance, @location, @additional)",
@@ -63,7 +65,7 @@ namespace InExile.Controllers
             return View("Success");
         }
 
-        public ActionResult Item(string name, string description, string additional)
+        public ActionResult Item(string name, string description, string additional, HttpPostedFileBase image)
         {
             Database.Connect();
             Database.RunSQL("INSERT INTO GuideNPCs(Name, Description, Additional) VALUES(@name, @description, @additional)",
