@@ -15,15 +15,17 @@ namespace InExile.Controllers
             return View();
         }
 
+        // Create and populate a Datatable
+        // Return the ViewGuide view and pass it a GuideViewModel
         public ActionResult ViewGuide(string Type)
         {
-            // Create and populate a Datatable
             DataTable table = GetTable(Type);
-            // Return the view and pass it the model
             GuideViewModel model = new GuideViewModel(table, Type);
             return View(model);
         }
 
+        // Get a single guide entry from the database
+        // Return the view of viewName and pass it a GuideEditModel
         public ActionResult GetEntry(int ID, string Type, string viewName)
         {
             Database.Connect();
@@ -33,6 +35,7 @@ namespace InExile.Controllers
             return View(viewName, model);
         }
 
+        // Query the database and return a DataTable
         public DataTable GetTable(string Type)
         {
             DataTable table = new DataTable();
@@ -56,6 +59,7 @@ namespace InExile.Controllers
 
             foreach (DataRow row in table.Rows)
             {
+                // For each row in the table provide it an Edit and Delete HypeLink that passes the entries ID and Type
                 row["Edit"] = new HtmlString("<a href=GetEntry?Id=" + row["ID"] + "&Type=" + Type + "&viewName=Edit>edit</a>"); ;
                 row["Delete"] = new HtmlString("<a href=GetEntry?Id=" + row["ID"] + "&Type=" + Type + "&viewName=Delete>delete</a>"); ;
             }

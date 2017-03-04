@@ -57,5 +57,6 @@ C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Web.Razor.xml
 C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Web.WebPages.xml
 C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Web.WebPages.Deployment.xml
 C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\bin\System.Web.WebPages.Razor.xml
+C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\obj\Debug\InExile.Web.csprojResolveAssemblyReference.cache
 C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\obj\Debug\InExile.dll
 C:\Users\caile_000\Desktop\InExile\InExile2.0\InExile\obj\Debug\InExile.pdb

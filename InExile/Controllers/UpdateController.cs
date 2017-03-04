@@ -12,21 +12,22 @@ namespace InExile.Controllers
     {
         DatabaseController Database = new DatabaseController();
 
+        // Return the Create view of Type
         public ActionResult Create(string Type)
         {
             return View((object)Type);
         }
 
+        // Take the recieved parameters and edit a single entry in the database.
         public ActionResult Edit (string Type, int ID, string name, string appearance, string location, string additional, string description, HttpPostedFileBase image)
         {
-            string path = "~/Content/Images/" + Type + "/" + image.FileName;
-            image.SaveAs(Server.MapPath(path));
+            string path = SaveImage(Type, image, name);
             Database.Connect();
 
             switch (Type)
             {
                 case "NPCs":
-                    Database.RunSQL("UPDATE Guide" + Type + " SET Name ='" + name + "',Appearance='" + appearance + "',Location='" + location + "',Additional='" + additional + "',Image='"+ path + "' WHERE ID =" + ID, null);
+                    Database.RunSQL("UPDATE Guide" + Type + " SET Name ='" + name + "',Appearance='" + appearance + "',Location='" + location + "',Additional='" + additional + "',Image='" + path + "' WHERE ID =" + ID, null);
                     break;
                 case "Locations":
                     Database.RunSQL("UPDATE Guide" + Type + " SET Name ='" + name + "',Description='" + description + "',Additional='" + additional + "',Image='" + path + "' WHERE ID =" + ID, null);
@@ -39,7 +40,25 @@ namespace InExile.Controllers
             Database.CloseConnection();
             return View("Success");
         }
+        
+        // Save the passed image parameter to disk and return the path as a string.
+        // If the image parameter is null set the path to a default no image icon.
+        private string SaveImage(string Type, HttpPostedFileBase image, string name)
+        {
+            string path = "";
+            if (image != null)
+            {
+                path = "~/Content/Images/" + Type + "/" + name + "/" + image.FileName;
+                image.SaveAs(Server.MapPath(path));
+            }
+            else
+            {
+                path = "~/Content/Images/Misc/NoImageIcon.png";
+            }
+            return path;
+        }
 
+        // Delete a single entry from the Database
         public ActionResult Delete(string Type, int ID)
         {
             Database.Connect();
@@ -48,10 +67,10 @@ namespace InExile.Controllers
             return View("Success");
         }
 
+        // Take the passed parameters and create a new entry in the database Locations table
         public ActionResult Locations(string name, string description, string additional, HttpPostedFileBase image)
         {
-            string path = "~/Content/Images/Locations/" + image.FileName;
-            image.SaveAs(Server.MapPath(path));
+            string path = SaveImage("Locations", image, name);
 
             Database.Connect();
             Database.RunSQL("INSERT INTO GuideLocations(Name, Description, Additional, Image) VALUES(@name, @description, @additional, @image)",
@@ -61,10 +80,10 @@ namespace InExile.Controllers
             return View("Success");
         }
 
+        // Take the passed parameters and create a new entry in the database NPCs table
         public ActionResult NPCs(string name, string appearance, string location, string additional , HttpPostedFileBase image)
         {
-            string path = "~/Content/Images/NPCs/" + image.FileName;
-            image.SaveAs(Server.MapPath(path));
+            string path = SaveImage("NPCs", image, name);
 
             Database.Connect();
             Database.RunSQL("INSERT INTO GuideNPCs(Name, Appearance, Location, Additional, Image) VALUES(@name, @appearance, @location, @additional, @image)",
@@ -74,10 +93,10 @@ namespace InExile.Controllers
             return View("Success");
         }
 
+        // Take the passed parameters and create a new entry in the database Items table
         public ActionResult Items(string name, string description, string additional, HttpPostedFileBase image)
         {
-            string path = "~/Content/Images/Items/" + image.FileName;
-            image.SaveAs(Server.MapPath(path));
+            string path = SaveImage("Items", image, name);
 
             Database.Connect();
             Database.RunSQL("INSERT INTO GuideItems(Name, Description, Additional, Image) VALUES(@name, @description, @additional, @image)",
