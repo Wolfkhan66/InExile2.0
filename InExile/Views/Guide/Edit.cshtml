@@ -4,13 +4,13 @@
     <p class="lead">Edit the fields below and click 'Submit'.</p>
 </div>
 
-<form class="form-horizontal" action="/Update/Edit">
+<form class="form-horizontal" method="post" action="/Update/Edit" enctype="multipart/form-data">
     <fieldset>
 
         <div class="form-group">
-        <input type="hidden" name="ID" id="ID" value="@Model.Dictionary["ID"]"/>
-        <input type="hidden" name="Type" id="Type" value="@Model.Type" />
-         </div>
+            <input type="hidden" name="ID" id="ID" value="@Model.Dictionary["ID"]" />
+            <input type="hidden" name="Type" id="Type" value="@Model.Type" />
+        </div>
 
         <!-- Text input-->
         <div class="form-group">
@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label class="col-md-2 control-label" for="appearance">Appearance</label>
                     <div class="col-md-6">
-                        <input id="appearance" name="appearance" type="text" placeholder="" value="@Model.Dictionary["Appearance"]"  class="form-control input-md">
+                        <input id="appearance" name="appearance" type="text" placeholder="" value="@Model.Dictionary["Appearance"]" class="form-control input-md">
                     </div>
                 </div>
 
@@ -57,6 +57,22 @@
             <label class="col-md-2 control-label" for="additional">Additional Information</label>
             <div class="col-md-6">
                 <textarea class="form-control" id="additional" name="additional">@Model.Dictionary["Additional"]</textarea>
+            </div>
+        </div>
+
+        <!-- Image -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="file">Image</label>
+            <div class="col-md-6">
+                <img src="@Url.Content(Model.Dictionary["Image"].ToString())" height="50%" width="50%" />
+            </div>
+        </div>
+
+        <!-- File Upload -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="file">Image Button</label>
+            <div class="col-md-6">
+                <input id="image" name="image" type="file">
             </div>
         </div>
 

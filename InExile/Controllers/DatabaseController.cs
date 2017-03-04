@@ -29,9 +29,9 @@ namespace InExile
                 this.MasterDatabase = new SQLiteConnection("Data Source=" + HostingEnvironment.ApplicationPhysicalPath +  ConfigurationManager.AppSettings["DatabasePath"] + ConfigurationManager.AppSettings["Database"] + ";Version=3;");
                 this.MasterDatabase.Open();
 
-                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideNPCs' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Appearance' TEXT, 'Location' TEXT, 'Additional' TEXT)", null);
-                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideLocations' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'Additional' TEXT)", null);
-                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideItems' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'Additional' TEXT)", null);
+                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideNPCs' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Appearance' TEXT, 'Location' TEXT, 'Additional' TEXT, 'Image' TEXT)", null);
+                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideLocations' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'Additional' TEXT, 'Image' TEXT)", null);
+                RunSQL("CREATE TABLE IF NOT EXISTS 'GuideItems' ('ID' INTEGER PRIMARY KEY AUTOINCREMENT, 'Name' TEXT, 'Description' TEXT, 'Additional' TEXT, 'Image' TEXT)", null);
                 return true;
             }
             catch (Exception e)

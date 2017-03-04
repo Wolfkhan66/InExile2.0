@@ -52,6 +52,14 @@
             }
         }
 
+        <!-- Image -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="file">Image</label>
+            <div class="col-md-6">
+                <img src="@Url.Content(Model.Dictionary["Image"].ToString())" height="50%" width="50%"/>
+            </div>
+        </div>
+
         <!-- Textarea -->
         <div class="form-group">
             <label class="col-md-2 control-label" for="additional">Additional Information</label>

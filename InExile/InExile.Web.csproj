@@ -430,6 +430,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Databases\" />
+    <Folder Include="Content\Images\Items\" />
+    <Folder Include="Content\Images\Locations\" />
+    <Folder Include="Content\Images\NPCs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
