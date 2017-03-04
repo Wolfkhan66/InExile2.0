@@ -44,13 +44,13 @@ namespace InExile.Controllers
             switch (Type)
             {
                 case "NPCs":
-                    table = Database.Select("SELECT ID, Name FROM GuideNPCs", null);
+                    table = Database.Select("SELECT * FROM GuideNPCs", null);
                     break;
                 case "Items":
-                    table = Database.Select("SELECT ID, Name FROM GuideItems", null);
+                    table = Database.Select("SELECT * FROM GuideItems", null);
                     break;
                 case "Locations":
-                    table = Database.Select("SELECT ID, Name FROM GuideLocations", null);
+                    table = Database.Select("SELECT * FROM GuideLocations", null);
                     break;
             }
             Database.CloseConnection();
@@ -60,8 +60,8 @@ namespace InExile.Controllers
             foreach (DataRow row in table.Rows)
             {
                 // For each row in the table provide it an Edit and Delete HypeLink that passes the entries ID and Type
-                row["Edit"] = new HtmlString("<a href=GetEntry?Id=" + row["ID"] + "&Type=" + Type + "&viewName=Edit>edit</a>"); ;
-                row["Delete"] = new HtmlString("<a href=GetEntry?Id=" + row["ID"] + "&Type=" + Type + "&viewName=Delete>delete</a>"); ;
+                row["Edit"] = new HtmlString("GetEntry?Id=" + row["ID"] + "&Type=" + Type + "&viewName=Edit"); ;
+                row["Delete"] = new HtmlString("GetEntry?Id=" + row["ID"] + "&Type=" + Type + "&viewName=Delete"); ;
             }
 
             return table;

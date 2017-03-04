@@ -48,12 +48,12 @@ namespace InExile.Controllers
             string path = "";
             if (image != null)
             {
-                path = "~/Content/Images/" + Type + "/" + name + "/" + image.FileName;
+                path = "/Content/Images/" + Type + "/" + name + "/" + image.FileName;
                 image.SaveAs(Server.MapPath(path));
             }
             else
             {
-                path = "~/Content/Images/Misc/NoImageIcon.png";
+                path = "/Content/Images/Misc/NoImageIcon.png";
             }
             return path;
         }
